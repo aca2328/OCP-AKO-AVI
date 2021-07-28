@@ -1,0 +1,7 @@
+export KUBECONFIG=/root/ocp-avi/ncp-oc4-vsphere/auth/kubeconfig
+oc edit cm avi-k8s-config -n avi-system
+oc label namespace hipster avisync=true
+oc logs ako-0 -n avi-system
+oc edit cm avi-k8s-config -n avi-system
+oc delete pods ako-0 -n avi-system
+

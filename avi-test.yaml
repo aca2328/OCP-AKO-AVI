@@ -1,0 +1,38 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: avitest-deployment
+  labels:
+    app: avitest
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: avitest
+  template:
+    metadata:
+      labels:
+        app: avitest
+    spec:
+      containers:
+      - name: avitest
+        image: projects.registry.vmware.com/nsx_alb/avi_demoweb:v1
+        ports:
+        - name: http
+          containerPort: 80
+          protocol: TCP
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: avisvc
+  labels:
+    svc: avisvc
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+  selector:
+    app: avitest

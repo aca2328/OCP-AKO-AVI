@@ -1,0 +1,28 @@
+apiVersion: ako.vmware.com/v1alpha1
+kind: HostRule
+metadata:
+  name: hip-hostrule
+  namespace: hipster
+spec:
+  virtualhost:
+    fqdn: hipsec.ocp.ako.avilab.fun # mandatory
+    enableVirtualHost: true
+    tls: # optional
+      sslKeyCertificate:
+        name: System-Default-Cert-EC
+        type: ref
+      sslProfile: System-Standard-PFS
+      termination: edge
+    gslb:
+      fqdn: foo.com
+    httpPolicy: 
+      policySets:
+      - police1-Default-Cloud-HTTP-Policy-Set-0
+      overwrite: false
+    datascripts:
+    - ping-script
+    - X-forward
+    wafPolicy: waf1
+    applicationProfile: customApp
+    analyticsProfile: System-Analytics-Profile
+    errorPageProfile: error1

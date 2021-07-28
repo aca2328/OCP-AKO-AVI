@@ -1,0 +1,11 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: front
+spec:
+  host: hipsec.ocp.ako.avilab.fun  
+  to:
+    kind: Service
+    name: frontend
+  tls:
+    terminaison: edge

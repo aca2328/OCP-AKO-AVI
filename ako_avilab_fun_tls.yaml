@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: router-certs-default
+  namespace: avi-system
+type: kubernetes.io/tls
+data:
+  tls.crt: xxxxx
+  tls.key: xxxxx
+# key generation : 
+# openssl genrsa -out ssl.key 2048
+# openssl req -new -x509 -key ssl.key -out ssl.cert -days 360 -subj /CN=sslapp.ako.avilab.me
+# sudo openssl req -new -x509 -key ssl.key -out ssl.cert -days 360 -subj /CN=sslapp.ako.avilab.me -rand
+# kubectl create secret tls certif1 --key=ssl.key --cert=ssl.cert
+

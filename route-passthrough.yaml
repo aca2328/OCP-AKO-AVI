@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: hippasstrou
+spec:
+  host: hippasstrou.ako.avilab.fun
+  to:
+    kind: Service
+    name: frontend
+  tls:
+    termination: passthrough

@@ -1,0 +1,20 @@
+# annotations:
+#     aviinfrasetting.ako.vmware.com/name: "my-infrasetting"
+
+apiVersion: ako.vmware.com/v1alpha1
+kind: AviInfraSetting
+metadata:
+  name: my-infra-setting
+spec:
+  seGroup:
+    name: compact-se-group
+  network:
+    names:
+      - vip-network-10-10-10-0-24
+    enableRhi: true
+    bgpPeerLabels:
+      - peer1
+      - peer2
+  l7Settings:
+    shardSize: MEDIUM
+
